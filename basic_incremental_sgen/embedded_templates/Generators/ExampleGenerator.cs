@@ -5,7 +5,7 @@ using CodeMechanic.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
-namespace fast_enums;
+namespace embedded_templates;
 
 [Generator]
 public sealed class ExampleGenerator : IIncrementalGenerator

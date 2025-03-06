@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Text;
 
-namespace fast_enums;
+namespace embedded_templates;
 
 public static class StringExtensions
 {

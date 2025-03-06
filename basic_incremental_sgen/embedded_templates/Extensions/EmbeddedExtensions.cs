@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace fast_enums;
+namespace embedded_templates;
 
 public static class EmbeddedExtensions
 {
