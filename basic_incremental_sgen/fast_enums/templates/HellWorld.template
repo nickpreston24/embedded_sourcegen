@@ -4,7 +4,7 @@
    {
        public static void SayHell()
        {
-           Console.WriteLine("Hell From Generator");
+           Console.WriteLine("Hell");
        }
    }
 }

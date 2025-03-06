@@ -2,12 +2,17 @@
 
 Console.WriteLine("Hello, World!");
 
-public class DemonstrationPan
+public class Demonstration
 {
-    public string weapon { get; set; } = string.Empty;
-
-    public DemonstrationPan()
+    public Demonstration()
     {
-        SourceGeneratorInCSharp.HelloWorld.SayHello();
+        SourceGeneratorInCSharp.HeckWorld
+            .SayHeck(); // 'Hello' in HelloWord.template is replaced with 'Heck'
+
+        SourceGeneratorInCSharp.StoredProcs
+            .search_todos(); // The name of an SP in Todos.sql is grabbed, then turned into a public static variable so we can use it in Intellisense.
+        // We can also treat it as a SqlTransaction and build SqlParams automatically.
+
+        // NOTE: there are many more applications.  The sky is the limit with Embedded Resources + Regex Extraction + Source Generators!
     }
 }

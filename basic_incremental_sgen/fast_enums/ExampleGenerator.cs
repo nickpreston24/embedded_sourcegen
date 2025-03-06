@@ -1,8 +1,7 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
+using CodeMechanic.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
@@ -12,13 +11,24 @@ namespace fast_enums;
 public sealed class ExampleGenerator : IIncrementalGenerator
 {
     private static Assembly my_ass = Assembly.GetExecutingAssembly();
-    private static Assembly their_ass = Assembly.GetCallingAssembly();
+    private static Assembly your_ass = Assembly.GetCallingAssembly();
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         context.RegisterPostInitializationOutput(async ctx =>
         {
-            string hell_code = await my_ass.ReadFile("HellWorld.template");
+            string hell_code = await your_ass.ReadFile("HellWorld.template");
+
+            var map = new Dictionary<string, string>()
+            {
+                [@"Hell"] = "Heck"
+            };
+
+            hell_code = hell_code
+                .Split('\n')
+                .ReplaceAll(map)
+                .Rollup();
+
             var sourceText =
                 !string.IsNullOrEmpty(hell_code)
                     ? hell_code
@@ -29,7 +39,7 @@ public sealed class ExampleGenerator : IIncrementalGenerator
                             {
                                 public static void SayHello()
                                 {
-                                    Console.WriteLine("Hello From Generator");
+                                    Console.WriteLine("Hello");
                                 }
                             }
                         }
@@ -37,24 +47,5 @@ public sealed class ExampleGenerator : IIncrementalGenerator
             ctx.AddSource("ExampleGenerator.g.cs",
                 SourceText.From(sourceText, Encoding.UTF8));
         });
-    }
-}
-
-public static class EmbeddedExtensions
-{
-    public static async Task<string> ReadFile(
-        this Assembly ass,
-        string file_hint)
-    {
-        string resourcePath = ass
-            .GetManifestResourceNames()
-            .FirstOrDefault(x =>
-                x.Contains(file_hint));
-
-        using (Stream stream = ass.GetManifestResourceStream(resourcePath))
-        using (StreamReader reader = new StreamReader(stream))
-        {
-            return await reader.ReadToEndAsync();
-        }
     }
 }

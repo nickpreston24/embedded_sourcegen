@@ -1,0 +1,10 @@
+﻿namespace SourceGeneratorInCSharp
+{
+    public static class StoredProcs
+    {
+        public static void ProcName()
+        {
+            Console.WriteLine("Hello");
+        }
+    }
+}
