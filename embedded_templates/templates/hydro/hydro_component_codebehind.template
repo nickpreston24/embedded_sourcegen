@@ -9,7 +9,7 @@ namespace $namespace$.Pages.Shared.Components
         //sample code
         // wakka-wakka!
         public int Count { get; set; }
-        public string Color { get; set; } = "Green";
+        public string Color { get; set; } = "Blue";
 
         public void Add()
         {
