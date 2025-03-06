@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="People.csv" CsvLoadType="Startup" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CsvTextFieldParser" Version="1.2.2" />
+      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.12.0" />
+    </ItemGroup>
+</Project>

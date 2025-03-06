@@ -1,0 +1,10 @@
+﻿namespace SourceGeneratorInCSharp
+{
+   public static class HellWorld
+   {
+       public static void SayHell()
+       {
+           Console.WriteLine("Hell From Generator");
+       }
+   }
+}
