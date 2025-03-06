@@ -1,0 +1,20 @@
+﻿@model HydroCounter2
+
+<section class="flex flex-col justify-center items-center gap-2">
+
+    <div class="grid grid-cols-1">
+
+        <div class="card w-96 bg-base-100 card-xs shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Source-Generated Counter 2 (@Model.Color)</h2>
+                <p>Count: <strong>@Model.Count</strong></p>
+                <div class="justify-end card-actions">
+                    <button class="btn btn-primary" on:click="@(() => Model.Add())">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

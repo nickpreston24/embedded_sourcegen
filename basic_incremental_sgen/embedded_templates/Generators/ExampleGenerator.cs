@@ -18,6 +18,7 @@ public sealed class ExampleGenerator : IIncrementalGenerator
         context.RegisterPostInitializationOutput(async ctx =>
         {
             string hell_code = await your_ass.ReadFile("HellWorld.template");
+            if (hell_code.IsEmpty()) return;
 
             var map = new Dictionary<string, string>()
             {
@@ -28,6 +29,9 @@ public sealed class ExampleGenerator : IIncrementalGenerator
                 .Split('\n')
                 .ReplaceAll(map)
                 .Rollup();
+
+            if (hell_code.IsEmpty()) return;
+
 
             var sourceText =
                 !string.IsNullOrEmpty(hell_code)
@@ -44,6 +48,8 @@ public sealed class ExampleGenerator : IIncrementalGenerator
                             }
                         }
                         """;
+
+            if (sourceText.IsEmpty()) return;
             ctx.AddSource("ExampleGenerator.g.cs",
                 SourceText.From(sourceText, Encoding.UTF8));
         });

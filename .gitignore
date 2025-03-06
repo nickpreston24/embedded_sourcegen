@@ -9,6 +9,6 @@ bin/
 nupkg/
 .idea/
 node_modules/
-wwwroot/lib/
+**/*/wwwroot/lib/
 *.rest
 *.env

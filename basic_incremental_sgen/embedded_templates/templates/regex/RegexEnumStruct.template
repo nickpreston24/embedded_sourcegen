@@ -1,0 +1,4 @@
+﻿using embedded_templates;
+
+public static RegexEnumStruct $name$Pattern =
+    new RegexEnumStruct($id$, $name$, @"$pattern$");

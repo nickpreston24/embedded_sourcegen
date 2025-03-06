@@ -1,0 +1,8 @@
+﻿@model Hydro$name$
+
+<div>
+    Count: <strong>@Model.Count</strong>
+    <button on:click="@(() => Model.Add())">
+        Increment
+    </button>
+</div>

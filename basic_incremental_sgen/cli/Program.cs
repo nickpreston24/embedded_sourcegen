@@ -11,5 +11,8 @@
         // We can, in the future, treat it as a SqlTransaction or build SqlParams automatically.
 
         // (NOTE: there are many more applications.  The sky is the limit with Embedded Resources + Regex Extraction + Source Generators!)
+
+
+        // regex enum structs:
     }
 }

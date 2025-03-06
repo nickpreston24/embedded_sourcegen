@@ -1,0 +1,18 @@
+﻿using Hydro;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace $namespace$.Pages.Shared.Components
+{
+    public class Hydro$name$ : HydroView
+    {
+        //sample
+        public int Count { get; set; }
+        public string Color { get; set; } = "Red";
+
+        public void Add()
+        {
+            Count++;
+        }
+    }
+}

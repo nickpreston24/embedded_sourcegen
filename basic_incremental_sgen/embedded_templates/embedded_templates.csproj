@@ -7,6 +7,7 @@
 
     <ItemGroup>
         <EmbeddedResource Include="**/*.template"/>
+        <Watch Include="**/*.template"/>
         <EmbeddedResource Include="**/*.sql"/>
     </ItemGroup>
 

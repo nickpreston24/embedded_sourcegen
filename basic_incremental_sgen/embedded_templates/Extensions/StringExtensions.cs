@@ -16,4 +16,11 @@ public static class StringExtensions
                 })
             .ToString();
     }
+
+    public static bool IsEmpty(this string text) =>
+        string.IsNullOrWhiteSpace(text);
+
+    public static bool IsNotEmpty(this string text) => !text.IsEmpty();
+
+    public static bool NotEmpty(this string text) => IsNotEmpty(text);
 }

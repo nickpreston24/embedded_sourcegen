@@ -1,0 +1,12 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace $namespace$
+{
+    public class $name$ : PageModel
+    {
+        public void OnGet()
+        {
+        }
+    }
+}

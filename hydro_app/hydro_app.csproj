@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Watch Include="**\*.cshtml*"/>
+        <Watch Include="/js/*.js"/>
+        <Watch Include=".env"/>
+        <Watch Include="**/*.sql"/>
+        <Watch Include="**/*.template"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Hydro" Version="1.1.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference
+                Include="..\basic_incremental_sgen\embedded_templates\embedded_templates.csproj" OutputItemType="Analyzer"
+                ReferenceOutputAssembly="false"/>
+    </ItemGroup>
+
+</Project>
