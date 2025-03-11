@@ -4,23 +4,30 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+
+        <!-- 
+            https://stackoverflow.com/questions/68318672/can-source-generator-created-files-be-physically-reached
+        -->
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>.generated</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
 
+
     <ItemGroup>
-        <Watch Include="**\*.cshtml*" />
-        <Watch Include="/js/*.js" />
-        <Watch Include=".env" />
-        <Watch Include="**/*.sql" />
-        <Watch Include="**/*.template" />
+        <Watch Include="**\*.cshtml*"/>
+        <Watch Include="/js/*.js"/>
+        <Watch Include=".env"/>
+        <Watch Include="**/*.sql"/>
+        <Watch Include="**/*.template"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CodeMechanic.RegularExpressions" Version="1.0.7" />
-        <PackageReference Include="Hydro" Version="1.1.0" />
+        <PackageReference Include="CodeMechanic.RegularExpressions" Version="1.0.7"/>
+        <PackageReference Include="Hydro" Version="1.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\embedded_templates\embedded_templates.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\embedded_templates\embedded_templates.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
     </ItemGroup>
 
 </Project>

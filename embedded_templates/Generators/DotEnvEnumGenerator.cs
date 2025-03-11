@@ -31,8 +31,9 @@ public sealed class DotEnvEnumGenerator : IIncrementalGenerator
                 {
                     [@"\$name\$"] = name,
                     [@"\$pattern\$"] = pattern,
-                    [@"\$namespace\$"] = "fubar",
-                    [@"\$comment\$"] = "dave isn't here, dude"
+                    // [@"\$namespace\$"] = "fubar",
+                    [@"\$comment\$"] =
+                        your_ass.Location ?? "dave isn't here, dude"
                 };
 
             string code = template_code

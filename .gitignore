@@ -1,3 +1,6 @@
+# ignoring generated .g.cs
+**/*/.generated/
+
 # local folders
 ./SourceGeneratorDemo-Part2/
 

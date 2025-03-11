@@ -11,38 +11,43 @@ namespace embedded_templates;
 public sealed class RegexEnumGenerator : IIncrementalGenerator
 {
     private static Assembly my_ass = Assembly.GetExecutingAssembly();
-    private static Assembly your_ass = Assembly.GetCallingAssembly();
+    // private static Assembly your_ass = Assembly.GetCallingAssembly();
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        context.RegisterPostInitializationOutput(async ctx =>
+        context.RegisterPostInitializationOutput(async context =>
         {
             string template_code =
                 await my_ass.ReadFile("RegexEnumBase.template");
-            // string id = "sample";
-            string name = "FoxRegexBase";
-            string pattern = @"\d+";
 
-            var replacements
-                = new Dictionary<string, string>()
-                {
-                    // [@"$id$"] = id,
-                    [@"\$name\$"] = name,
-                    [@"\$pattern\$"] = pattern,
-                };
+            var patterns = new List<Pattern>()
+            {
+                new Pattern { name = "FoxRegexBase", pattern = @"\d+" },
+                new Pattern { name = "HothEchoBase", pattern = @"\d{20,}+" }
+            };
 
-            string code = template_code
-                .Split('\n')
-                .ReplaceAll(replacements)
-                .Rollup();
+            foreach (var regex_pattern in patterns)
+            {
+                var replacements
+                    = new Dictionary<string, string>()
+                    {
+                        [@"\$name\$"] = regex_pattern.name,
+                        [@"\$pattern\$"] = regex_pattern.pattern,
+                    };
 
-            ctx.AddSource($"{name}.g.cs",
-                SourceText.From(code, Encoding.UTF8));
+                string code = template_code
+                    .Split('\n')
+                    .ReplaceAll(replacements)
+                    .Rollup();
+
+                context.AddSource($"{regex_pattern.name}.g.cs",
+                    SourceText.From(code, Encoding.UTF8));
+            }
         });
     }
 }
 
-public class RegexEnumParts
+internal class Pattern
 {
     public string id { get; set; } = string.Empty;
     public string name { get; set; } = string.Empty;
