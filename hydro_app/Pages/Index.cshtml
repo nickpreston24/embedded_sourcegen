@@ -1,7 +1,10 @@
 ﻿@page
+@using embedded_templates
+@using hydro_app.Pages.Shared.Components
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    string bar = DotEnvEnumTest.Foo;
 }
 
 <div class="text-center">
@@ -10,6 +13,8 @@
     <hydro-counter></hydro-counter>
 
     <hydro-counter2></hydro-counter2>
+
+    <span>@bar</span>
 
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

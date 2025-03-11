@@ -7,7 +7,7 @@ namespace $namespace$.Pages.Shared.Components
     public class Hydro$name$ : HydroComponent
     {
         //sample code
-        // wakka-wakka!
+        // bow-wakka-wowwww!!
         public int Count { get; set; }
         public string Color { get; set; } = "Blue";
 

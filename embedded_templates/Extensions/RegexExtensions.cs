@@ -15,7 +15,7 @@ public static class RegexExtensions
         _propertyCache =
             new Dictionary<Type, ICollection<PropertyInfo>>();
 
-    public static string[] ReplaceAll(
+    internal static string[] ReplaceAll(
         this string[] lines,
         Dictionary<string, string> replacementMap
     )
@@ -60,7 +60,7 @@ public static class RegexExtensions
         return results.ToArray();
     }
 
-    public static List<T> Extract<T>(
+    internal static List<T> Extract<T>(
         this string text,
         Regex regex,
         bool enforce_exact_match = false,

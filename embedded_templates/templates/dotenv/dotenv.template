@@ -1,0 +1,7 @@
+﻿namespace embedded_templates;   
+
+public static class $name$ 
+{
+   public static string Foo = "Baz"; // $comment$
+   // $comment$
+}

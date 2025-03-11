@@ -1,0 +1,14 @@
+﻿using CodeMechanic.RegularExpressions;
+namespace embedded_templates;   
+
+public class $name$ : RegexEnumBase
+{
+    public static $name$ Basic =
+        new $name$(1, nameof(Basic)
+            , @"$pattern$");
+
+    protected $name$(int id, string name, string pattern,
+        string uri = "") : base(id, name, pattern, uri)
+    {
+    }
+}

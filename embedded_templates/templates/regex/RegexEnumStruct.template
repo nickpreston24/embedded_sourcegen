@@ -1,4 +1,7 @@
-﻿using embedded_templates;
+﻿using embedded_templates;   
 
-public static RegexEnumStruct $name$Pattern =
-    new RegexEnumStruct($id$, $name$, @"$pattern$");
+public struct $name$ : RegexEnumStruct 
+{
+    public static $name$ =
+        new $name$ (1, $name$, @"$pattern$");
+}

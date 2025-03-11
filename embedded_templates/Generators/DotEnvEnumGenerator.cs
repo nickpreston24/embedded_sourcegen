@@ -8,7 +8,7 @@ using Microsoft.CodeAnalysis.Text;
 namespace embedded_templates;
 
 [Generator]
-public sealed class RegexEnumGenerator : IIncrementalGenerator
+public sealed class DotEnvEnumGenerator : IIncrementalGenerator
 {
     private static Assembly my_ass = Assembly.GetExecutingAssembly();
     private static Assembly your_ass = Assembly.GetCallingAssembly();
@@ -18,17 +18,21 @@ public sealed class RegexEnumGenerator : IIncrementalGenerator
         context.RegisterPostInitializationOutput(async ctx =>
         {
             string template_code =
-                await my_ass.ReadFile("RegexEnumBase.template");
-            // string id = "sample";
-            string name = "FoxRegexBase";
+                await my_ass.ReadFile("dotenv.template");
+
+            // string env_code = await your_ass.ReadFile(".env");
+
+            string name = "DotEnvEnumTest";
             string pattern = @"\d+";
+            string ns = "sharpify_web"; // your_ass.FullName;
 
             var replacements
                 = new Dictionary<string, string>()
                 {
-                    // [@"$id$"] = id,
                     [@"\$name\$"] = name,
                     [@"\$pattern\$"] = pattern,
+                    [@"\$namespace\$"] = "fubar",
+                    [@"\$comment\$"] = "dave isn't here, dude"
                 };
 
             string code = template_code
@@ -40,12 +44,4 @@ public sealed class RegexEnumGenerator : IIncrementalGenerator
                 SourceText.From(code, Encoding.UTF8));
         });
     }
-}
-
-public class RegexEnumParts
-{
-    public string id { get; set; } = string.Empty;
-    public string name { get; set; } = string.Empty;
-    public string url { get; set; } = string.Empty;
-    public string pattern { get; set; } = string.Empty;
 }
